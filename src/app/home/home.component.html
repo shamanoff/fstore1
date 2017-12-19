@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div *ngFor="let note of notes | async">
+  <h3>{{ note | json }}</h3>
+</div>
+
+<h1>{{note | async | json}}</h1>
+
+<input [(ngModel)]="newContent" >
+<button (click)="updateContent()">send</button>
+
+<button (click)="toLogin()">to login</button>
