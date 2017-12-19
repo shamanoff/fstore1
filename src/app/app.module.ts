@@ -11,9 +11,10 @@ import {UserProfileComponent} from './user-profile/user-profile.component';
 import {AuthService} from './core/auth.service';
 import {RouterModule, Routes} from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import {AngularFireAuth} from 'angularfire2/auth';
 
 const appRoutes: Routes = [
-  {path: '', component: AppComponent},
+  {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'profile', component: UserProfileComponent}
 ];
@@ -29,9 +30,10 @@ const appRoutes: Routes = [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule.enablePersistence(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+
   ],
-  providers: [AuthService],
+  providers: [AuthService, AngularFireAuth],
   bootstrap: [AppComponent]
 })
 export class AppModule {

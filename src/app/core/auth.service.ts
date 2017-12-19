@@ -25,7 +25,7 @@ export class AuthService {
     this.user = this.afAuth.authState
       .switchMap(user => {
         if (user) {
-          return this.afs.doc<User>('user/${user.uid}').valueChanges();
+          return this.afs.doc<User>('user/' + user.uid).valueChanges();
         } else {
           return Observable.of(null);
         }
@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   private updateUserData(user) {
-    const userRef: AngularFirestoreDocument<User> = this.afs.doc('user/${user.uid');
+    const userRef: AngularFirestoreDocument<User> = this.afs.doc('user/' + user.uid);
 
     const data: User = {
       uid: user.uid,
